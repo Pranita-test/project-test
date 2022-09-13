@@ -1,6 +1,5 @@
 name: OWASP ZAP integration with GitHub Actions..
 on: [push]
-branches: main
 
 jobs:
   zap_scan:
@@ -13,6 +12,7 @@ jobs:
           ref: master
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.4.0
+        options: --user root
         with:
           docker_name: 'owasp/zap2docker-stable'
           target: 'http://testphp.vulnweb.com/'
